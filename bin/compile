@@ -8,7 +8,7 @@ ENV_DIR=$3
 
 MAXMINDDB_VERSION=${MAXMINDDB_VERSION-1.1.0}
 
-maxmindbd_tarball_url=https://github.com/maxmind/mod_maxminddb/releases/download/1.1.0/mod_maxminddb-${MAXMINDDB_VERSION}.tar.gz
+maxmindbd_tarball_url=https://github.com/maxmind/mod_maxminddb/releases/download/${MAXMINDDB_VERSION}/mod_maxminddb-${MAXMINDDB_VERSION}.tar.gz
 
 temp_dir=$(mktemp -d /tmp/maxmind.XXXXXXXXXX)
 
