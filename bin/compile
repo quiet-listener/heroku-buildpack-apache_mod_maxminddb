@@ -21,7 +21,7 @@ trap cleanup EXIT
 cd $temp_dir
 echo "Temp dir: $temp_dir"
 echo "Downloading $maxminddb_tarball_url"
-curl -o mod_maxminddb-${MAXMINDDB_VERSION}.tar.gz -L $maxmindbd_tarball_url
+curl -o mod_maxminddb-${MAXMINDDB_VERSION}.tar.gz -L $maxminddb_tarball_url
 tar -zxvf mod_maxminddb-${MAXMINDDB_VERSION}.tar.gz
 (
     cd mod_maxminddb-${MAXMINDDB_VERSION}
