@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+set -e # bail if any command fails
+
+BUILD_DIR=$1
+CACHE_DIR=$2
+ENV_DIR=$3
+
+MAXMINDDB_VERSION=${MAXMINDDB_VERSION-1.1.0}
+
+maxmindbd_tarball_url=https://github.com/maxmind/mod_maxminddb/releases/download/1.1.0/mod_maxminddb-${MAXMINDDB_VERSION}.tar.gz
+
+temp_dir=$(mktemp -d /tmp/maxmind.XXXXXXXXXX)
+
+cleanup() {
+  echo "Cleaning up $temp_dir"
+  cd /
+  rm -rf "$temp_dir"
+}
+trap cleanup EXIT
+cd $temp_dir
+echo "Temp dir: $temp_dir"
+echo "Downloading $maxminddb_tarball_url"
+curl -LO $maxmindbd_tarball_url | tar xfz -
+(
+    cd mod_maxminddb-${MAXMINDDB_VERSION}
+  ./configure ./configure --with-apxs=/app/.heroku/php/bin/apxs && make install
+)
+trap cleanup EXIT

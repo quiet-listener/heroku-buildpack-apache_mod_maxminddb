@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+echo "apache module maxminddb installation"
+exit 0

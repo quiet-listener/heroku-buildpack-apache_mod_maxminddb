@@ -1,0 +1,7 @@
+build/
+cache/
+env/
+vendor/
+*.env
+*.idea
+*.DS_Store
