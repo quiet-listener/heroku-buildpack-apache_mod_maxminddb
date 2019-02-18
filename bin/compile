@@ -8,7 +8,7 @@ ENV_DIR=$3
 
 MAXMINDDB_VERSION=${MAXMINDDB_VERSION-1.1.0}
 
-maxmindbd_tarball_url=https://github.com/maxmind/mod_maxminddb/releases/download/${MAXMINDDB_VERSION}/mod_maxminddb-${MAXMINDDB_VERSION}.tar.gz
+maxminddb_tarball_url=https://github.com/maxmind/mod_maxminddb/releases/download/${MAXMINDDB_VERSION}/mod_maxminddb-${MAXMINDDB_VERSION}.tar.gz
 
 temp_dir=$(mktemp -d /tmp/maxmind.XXXXXXXXXX)
 
@@ -25,5 +25,6 @@ curl -o mod_maxminddb-${MAXMINDDB_VERSION}.tar.gz -L $maxmindbd_tarball_url
 tar -zxvf mod_maxminddb-${MAXMINDDB_VERSION}.tar.gz
 (
     cd mod_maxminddb-${MAXMINDDB_VERSION}
-  ./configure ./configure --with-apxs=/app/.heroku/php/bin/apxs && make install
+  ./configure --with-apxs=/app/.heroku/php/bin/apxs && make install
 )
+trap cleanup EXIT
