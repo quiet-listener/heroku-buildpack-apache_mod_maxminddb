@@ -23,7 +23,7 @@ heroku buildpacks --app foobar #Yourappname
 By running above command with your app name you could list you buildpack attached to that app. Attach this build pack at any order after your buildpack containing apache.
 ``` bash 
 # replace 3 with your position and foobar with your app name
-heroku buildpacks:add --index 3 https://github.com/quitelistner/heroku-buildpack-apache_mod_maxminddb --app foobar
+heroku buildpacks:add --index 3 https://github.com/quiet-listener/heroku-buildpack-apache_mod_maxminddb.git --app foobar
 ```
 The default maxminddb version is set to ```1.1.0``` and default apxs path is set to ```/app/.heroku/php/bin/apxs```
 
